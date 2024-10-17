@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Box } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import Sidebar from './components/Sidebar';
+import ChatList from './components/ChatList';
+import SearchBar from './components/SearchBar';
+import  {addQuery} from './store/slices/querySlice';
 
-function App() {
+const staticCarData = [
+  {
+    title: '2020 Acura TLX A-Spec w/Red Leather',
+    VIN: '19UUB2F64LA003664',
+    Price: '$31,999',
+    image: '/images/car1.png',
+  },
+  {
+    title: '2020 Acura TLX A-Spec w/Red Leather',
+    VIN: '19UUB2F64LA003664',
+    Price: '$31,999',
+    image: '/images/car1.png',
+  },
+];
+
+const App = () => {
+  const dispatch = useDispatch();
+  const queryList = useSelector((state) => state.queries.queryList);
+
+  const handleSendMessage = (query) => {
+    if (query) {
+      dispatch(addQuery({ query, response: staticCarData }));
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ display: 'flex', height: '100vh' }}>
+      <Sidebar />
+      <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+        <ChatList messages={queryList} />
+        <SearchBar onSend={handleSendMessage} />
+      </Box>
+    </Box>
   );
-}
+};
 
 export default App;
