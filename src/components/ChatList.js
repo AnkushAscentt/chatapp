@@ -7,16 +7,15 @@ const ChatList = ({ messages }) => {
       sx={{
         flexGrow: 1,
         padding: 2,
-        overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        bgcolor: '#f5f5f5',
+        bgcolor: '#f5f5f5', 
+        overflowY: 'auto',
       }}
     >
       {messages.map((message, index) => (
         <Box key={index} sx={{ marginBottom: 2 }}>
-          {/* User Query */}
           <Typography
             sx={{
               alignSelf: 'flex-end',

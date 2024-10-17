@@ -7,8 +7,8 @@ const SearchBar = ({ onSend }) => {
 
   const handleSend = () => {
     if (query.trim()) {
-      onSend(query); // Call the onSend function passed from App.js
-      setQuery(''); // Clear input after sending
+      onSend(query);
+      setQuery('');
     }
   };
 
@@ -21,7 +21,7 @@ const SearchBar = ({ onSend }) => {
           placeholder="Type your message..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSend()} // Handle "Enter" key press
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
         />
         <IconButton color="primary" onClick={handleSend}>
           <SendIcon />

@@ -25,7 +25,7 @@ const Sidebar = () => {
           <ListItem key={index} sx={{ borderBottom: '1px solid #ddd' }}>
             <ListItemText
               primary={item.query} // Show the query text
-              secondary={`Response: ${item.response.length} cars`} // Example of showing a short response summary
+              // secondary={`Response: ${item.response.length} cars`}
             />
           </ListItem>
         ))}
